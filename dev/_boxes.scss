@@ -1,0 +1,81 @@
+.boxes-alt{
+    background:#f9f9f9;
+}
+
+.boxes-alt__container{
+    width:$width;
+    padding:45px 0;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+}
+
+.boxes-alt__header{
+    color: #828282;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 29px;
+    font-family: HelveticaNeueLTStdMd;
+    letter-spacing: -0.27px;
+    padding:11px 0 20px 2px;
+}
+
+.boxes-alt__info{
+    color: #828282;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.14px;
+    padding-bottom: 20px;
+}
+
+.boxes-alt__button{
+    background:#f9f9f9;
+    color: #a4a4a4;
+    border: 1px solid #b8b8b8;
+    border-radius: 6px;
+    padding: 7px 0;
+    font-family: HelveticaNeueLTStdRoman;
+    font-size: 16px;
+    position: relative;
+    margin-right: 14px;
+    span{
+        position: relative;
+        bottom: 1px;
+        padding: 8px 11px 8px 13px;
+    }
+    i{
+        font-size: 20px;
+        padding-left: 14px;
+        margin-right: - 6px;
+    }
+    img{
+        padding-right: 13px;
+    }
+    cursor: pointer;
+    transition:all.2s;
+    &:hover{
+        background:	#F0F0F0;
+    }
+
+}
+.boxes-alt__box{
+    padding-bottom: 16px;
+}
+
+.boxes-alt__box--2{
+    padding-left: 48px;
+    border-left: 1px solid#e1e1e1;
+}
+
+.boxes-alt__box--3{
+    padding-left: 38px;
+    border-left: 1px solid#e1e1e1;
+}
+
+.e-font{
+    background-image:url(../../img/-.png);
+    background-repeat:no-repeat;
+    background-position:60% 26%;
+}
