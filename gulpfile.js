@@ -5,7 +5,7 @@ const watch = require('gulp-watch');
 gulp.task('default', () =>
     gulp.src('js/script.js')
         .pipe(babel({
-            presets: ["es2015-node5"]
+            presets: ["env"]
         }))
         .pipe(gulp.dest('prod/js'))
 );

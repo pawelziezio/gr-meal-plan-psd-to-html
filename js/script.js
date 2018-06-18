@@ -1,5 +1,3 @@
-const dupa = 100;
-
 const updateProgressBar = (activeWeek) =>{
 
     const weeks = document.getElementsByClassName('plan__progress--week');
