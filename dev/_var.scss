@@ -14,7 +14,7 @@ $bordercolor-ver: #dcdcdc;
 }
 
 .hour{
-    font-family: "Nunito";
+    font-family: "Nunito", Arial, Helvetica, sans-serif;;
     font-weight: 700;
     font-style: 20px;
     color: #828282;
@@ -22,7 +22,11 @@ $bordercolor-ver: #dcdcdc;
 }
 
 .light{
-    font-family: "Nunito";
+    font-family: "Nunito", Arial, Helvetica, sans-serif;;
     color:#828282;
     font-size: 12px;
+}
+
+*{
+    box-sizing: border-box;
 }
