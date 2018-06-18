@@ -1,15 +1,15 @@
 "use strict";
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+const dupa = 100;
 
-var updateProgressBar = function updateProgressBar(activeWeek) {
+const updateProgressBar = activeWeek => {
 
-    var weeks = document.getElementsByClassName('plan__progress--week');
-    var weeksArray = [].concat(_toConsumableArray(weeks));
+    const weeks = document.getElementsByClassName('plan__progress--week');
+    const weeksArray = [...weeks];
 
     if (activeWeek === 1) {
         weeksArray[0].style.backgroundImage = "url(img/circleActive.png)";
-        for (var i = 1; i < weeks.length; i++) {
+        for (let i = 1; i < weeks.length; i++) {
             weeksArray[i].style.backgroundImage = "url(img/circle+line.png)";
         }
     };
@@ -17,52 +17,52 @@ var updateProgressBar = function updateProgressBar(activeWeek) {
     if (activeWeek === 2) {
         weeksArray[0].style.backgroundImage = "url(img/circleG.png)";
         weeksArray[1].style.backgroundImage = "url(img/circleActive+line.png)";
-        for (var _i = 2; _i < weeks.length; _i++) {
-            weeksArray[_i].style.backgroundImage = "url(img/circle+line.png)";
+        for (let i = 2; i < weeks.length; i++) {
+            weeksArray[i].style.backgroundImage = "url(img/circle+line.png)";
         }
     };
 
     if (activeWeek > 2) {
         weeksArray[0].style.backgroundImage = "url(img/circleG.png)";
-        for (var _i2 = 1; _i2 < weeksArray.length; _i2++) {
-            if (_i2 < activeWeek - 1) {
-                weeksArray[_i2].style.backgroundImage = "url(img/circle+lineG.png)";
+        for (let i = 1; i < weeksArray.length; i++) {
+            if (i < activeWeek - 1) {
+                weeksArray[i].style.backgroundImage = "url(img/circle+lineG.png)";
             }
             weeksArray[activeWeek - 1].style.backgroundImage = "url(img/circleActive+line.png)";
-            for (var _i3 = activeWeek; _i3 < weeks.length; _i3++) {
-                weeksArray[_i3].style.backgroundImage = "url(img/circle+line.png)";
+            for (let i = activeWeek; i < weeks.length; i++) {
+                weeksArray[i].style.backgroundImage = "url(img/circle+line.png)";
             }
         };
     };
 };
 
-var showDayNumber = function showDayNumber(weekNr) {
-    var dayNrCells = document.querySelectorAll('.plan__table--day-nr');
-    var dayNrCellsArray = [].concat(_toConsumableArray(dayNrCells));
+const showDayNumber = weekNr => {
+    const dayNrCells = document.querySelectorAll('.plan__table--day-nr');
+    const dayNrCellsArray = [...dayNrCells];
 
-    dayNrCellsArray.forEach(function (day, index) {
-        var dayNumber = index + 1 + (weekNr - 1) * 7;
+    dayNrCellsArray.forEach((day, index) => {
+        let dayNumber = index + 1 + (weekNr - 1) * 7;
         day.innerText = dayNumber;
     });
 };
 
-var backgroundPresentDay = function backgroundPresentDay(dayNumber) {
+const backgroundPresentDay = dayNumber => {
 
-    var cellsWithDayNr = document.querySelectorAll('.plan__table--day-nr');
-    var cellsWithDayNrArray = [].concat(_toConsumableArray(cellsWithDayNr));
+    const cellsWithDayNr = document.querySelectorAll('.plan__table--day-nr');
+    const cellsWithDayNrArray = [...cellsWithDayNr];
 
-    cellsWithDayNrArray.forEach(function (cell) {
+    cellsWithDayNrArray.forEach(cell => {
         if (parseInt(cell.innerText) === parseInt(dayNumber)) {
 
-            var dayBox = cell.parentElement;
-            var presentDayName = dayBox.className.split(' ')[1].split('-').pop();
+            let dayBox = cell.parentElement;
+            let presentDayName = dayBox.className.split(' ')[1].split('-').pop();
 
-            var selector = "[class*=" + presentDayName + "]";
-            var cellsWithDayNameInClass = document.querySelectorAll(selector);
-            var cellsWithDayNameInClassArray = [].concat(_toConsumableArray(cellsWithDayNameInClass));
+            let selector = `[class*=${presentDayName}]`;
+            let cellsWithDayNameInClass = document.querySelectorAll(selector);
+            let cellsWithDayNameInClassArray = [...cellsWithDayNameInClass];
 
-            var cellsLength = cellsWithDayNameInClassArray.length;
-            for (var i = 0; i < cellsLength; i++) {
+            let cellsLength = cellsWithDayNameInClassArray.length;
+            for (let i = 0; i < cellsLength; i++) {
                 if (i === 0) {
                     cellsWithDayNameInClassArray[i].classList.toggle('presentWeekBorderTop');
                 } else if (i > 0 && i < cellsLength - 2) {
@@ -83,26 +83,26 @@ var backgroundPresentDay = function backgroundPresentDay(dayNumber) {
     });
 };
 
-var startDate = {
+const startDate = {
     year: 2018,
     month: 3,
     day: 23
 };
 
-var weekInMSec = 7 * 24 * 60 * 60 * 1000;
-var dayInMSec = 24 * 60 * 60 * 1000;
+const weekInMSec = 7 * 24 * 60 * 60 * 1000;
+const dayInMSec = 24 * 60 * 60 * 1000;
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    var timeDifference = new Date().getTime() - new Date(startDate.year, startDate.month, startDate.day).getTime();
+    let timeDifference = new Date().getTime() - new Date(startDate.year, startDate.month, startDate.day).getTime();
 
-    var presenWeek = Math.ceil(timeDifference / weekInMSec);
+    let presenWeek = Math.ceil(timeDifference / weekInMSec);
 
-    var presentDay = Math.ceil(timeDifference / dayInMSec);
+    let presentDay = Math.ceil(timeDifference / dayInMSec);
 
-    var prevWeek = document.querySelector('.plan__button--prev');
-    var nextWeek = document.querySelector('.plan__button--next');
-    var week = document.querySelector('.plan__week-nr--active');
+    const prevWeek = document.querySelector('.plan__button--prev');
+    const nextWeek = document.querySelector('.plan__button--next');
+    const week = document.querySelector('.plan__week-nr--active');
 
     week.innerText = presenWeek;
 
@@ -110,10 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateProgressBar(presenWeek);
     backgroundPresentDay(presentDay);
 
-    var temp = 0;
+    let temp = 0;
 
-    prevWeek.addEventListener('click', function (e) {
-        var activeWeek = parseInt(week.innerText);
+    const prevWeekFuncion = temp => {
+        let activeWeek = parseInt(week.innerText);
 
         if (activeWeek > 1) {
             activeWeek--;
@@ -131,10 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundPresentDay(presentDay);
             temp = 0;
         }
-    });
+    };
 
-    nextWeek.addEventListener('click', function (e) {
-        var activeWeek = parseInt(week.innerText);
+    const nextWeekFunction = temp => {
+        let activeWeek = parseInt(week.innerText);
 
         if (activeWeek < 12) {
             activeWeek++;
@@ -152,14 +152,33 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundPresentDay(presentDay);
             temp = 0;
         }
+    };
+
+    prevWeek.addEventListener('click', function (e) {
+        prevWeekFuncion(temp);
     });
 
-    var mealCells = document.querySelectorAll('.plan__table--meal');
-    var mealCellsArray = [].concat(_toConsumableArray(mealCells));
+    nextWeek.addEventListener('click', function (e) {
+        nextWeekFunction(temp);
+    });
 
-    mealCellsArray.forEach(function (mealCell, i) {
+    window.addEventListener('keydown', function (e) {
+        let key = e.keyCode;
+        if (key === 37) {
+            prevWeekFuncion(temp);
+        }
+
+        if (key === 39) {
+            nextWeekFunction(temp);
+        }
+    });
+
+    const mealCells = document.querySelectorAll('.plan__table--meal');
+    const mealCellsArray = [...mealCells];
+
+    mealCellsArray.forEach((mealCell, i) => {
         mealCell.addEventListener('click', function (e) {
-            var imgEatenMark = this.firstElementChild.nextElementSibling;
+            let imgEatenMark = this.firstElementChild.nextElementSibling;
 
             if (imgEatenMark.style.display === "block") {
                 imgEatenMark.style.display = "none";
@@ -169,13 +188,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    var workoutCells = document.querySelectorAll('.plan__table--workout');
-    var workoutCellsArray = [].concat(_toConsumableArray(workoutCells));
+    const workoutCells = document.querySelectorAll('.plan__table--workout');
+    const workoutCellsArray = [...workoutCells];
 
-    workoutCellsArray.forEach(function (workoutCell, i) {
+    workoutCellsArray.forEach((workoutCell, i) => {
         if (i > 0) {
             workoutCell.addEventListener('click', function (e) {
-                if (this.style.backgroundImage === 'url("img/workout-active.png")') {
+                if (thisrt(String.fromCharCode(key)).style.backgroundImage === 'url("img/workout-active.png")') {
                     this.style.backgroundImage = 'url("img/workout.png")';
                 } else {
                     this.style.backgroundImage = 'url("img/workout-active.png")';

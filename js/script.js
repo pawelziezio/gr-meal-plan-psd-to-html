@@ -1,3 +1,5 @@
+const dupa = 100;
+
 const updateProgressBar = (activeWeek) =>{
 
     const weeks = document.getElementsByClassName('plan__progress--week');
@@ -92,6 +94,7 @@ const startDate = {
 const weekInMSec = 7 * 24 * 60 * 60 * 1000;
 const dayInMSec = 24 * 60 * 60 * 1000;
 
+
 document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -113,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let temp = 0;
 
-    prevWeek.addEventListener('click',function(e){
+    const prevWeekFuncion = (temp) => {
         let activeWeek = parseInt(week.innerText);
 
         if(activeWeek > 1){
@@ -132,9 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
             backgroundPresentDay(presentDay);
             temp = 0;
         }
-    })
+    }
 
-    nextWeek.addEventListener('click',function(e){
+    const nextWeekFunction = (temp) => {
         let activeWeek = parseInt(week.innerText);
 
         if(activeWeek < 12){
@@ -153,7 +156,28 @@ document.addEventListener("DOMContentLoaded", function() {
             backgroundPresentDay(presentDay);
             temp = 0;
         }
+    }
+
+    prevWeek.addEventListener('click',function(e){
+        prevWeekFuncion(temp);
     })
+
+    nextWeek.addEventListener('click',function(e){
+        nextWeekFunction(temp);
+    })
+
+
+    window.addEventListener('keydown', function(e) {
+        let key = e.keyCode;
+        if(key === 37){
+            prevWeekFuncion(temp);
+        }
+        if(key === 39){
+            nextWeekFunction(temp);
+        }
+
+    });
+
 
     const mealCells = document.querySelectorAll('.plan__table--meal')
     const mealCellsArray = [...mealCells];
@@ -176,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
     workoutCellsArray.forEach((workoutCell, i)=>{
         if( i > 0 ){
             workoutCell.addEventListener('click',function(e){
-                if(this.style.backgroundImage === 'url("img/workout-active.png")'){
+                if(thisrt(String.fromCharCode(key)).style.backgroundImage === 'url("img/workout-active.png")'){
                     this.style.backgroundImage = 'url("img/workout.png")';
                 }else{
                     this.style.backgroundImage = 'url("img/workout-active.png")';
